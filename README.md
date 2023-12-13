@@ -1,26 +1,35 @@
-//# CODSOFT
+
 #include <iostream>
-#include <stdexcept>
+#include <cstdlib>  
+#include <ctime>    
 using namespace std;
 int main() {
-    string menu[] = { "fruits", "chicken", "fish", "cake" };
-    try {
-        int x;
-        cout << "Enter a number to select a menu item: ";
-        cin >> x;
 
-        if (x < 0 || x >= sizeof(menu) / sizeof(menu[0])) {
-            throw out_of_range("404 - not found");
+    srand(time(0));
+    int secretNumber = rand() % 100 + 1;
+
+    int guess;
+    int count = 0;
+    cout << "Welcome to the Number Guessing Game!\n";
+    cout << "Try to guess the number between 1 and 100.\n\n";
+
+    do {
+        cout << "Enter your guess: ";
+        cin >> guess;
+
+        if (guess == secretNumber) {
+            cout << "Congratulations! You guessed the correct number in " << count << " attempts.\n";
+        }
+        else if (guess < secretNumber) {
+            cout << "Too low. Try again.\n";
+        }
+        else {
+            cout << "Too high. Try again.\n";
         }
 
-        cout << "You selected: " << menu[x] << endl;
-    }
-    catch (const out_of_range& e) {
-        cerr << e.what() << endl;
-    }
-    catch (...) {
-        cerr << "An unknown error occurred." << endl;
-    }
+        count++;
+
+    } while (guess != secretNumber);
 
     return 0;
 }
