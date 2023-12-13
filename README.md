@@ -1,11 +1,9 @@
-//# CODSOFT
+# CODSOFT
 #include <iostream>
 #include <stdexcept>
 using namespace std;
-
 int main() {
     string menu[] = { "fruits", "chicken", "fish", "cake" };
-
     try {
         int x;
         cout << "Enter a number to select a menu item: ";
